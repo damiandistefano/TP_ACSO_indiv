@@ -55,3 +55,4 @@ char* str_concat(char* a, char* b);
  *  Imprime la lista list en el archivo file.
 */
 void string_proc_list_print(string_proc_list* list, FILE* file);
+

@@ -1,0 +1,28 @@
+Damian Distefano
+ddistefano@udesa.edu.ar
+
+Fase 1:
+Desensamblé la función con disas phase_1 y vi que comparaba la entrada del usuario con una cadena en la dirección 
+0x4c5158. Usé x/s 0x4c5158 para ver la cadena esperada y la copié como respuesta.
+
+Fase 2:
+Analizando el ensamblador vi que toma dos números como input, los convierte con strtoq, los multiplica y suma. 
+El producto no debe ser 0 y la suma debe ser 7514. Luego se llama a misterio, que explota si los dos números tienen el mismo signo. 
+Por lo tanto, la solución es dos números distintos de cero, que sumen 7514 y tengan signos opuestos.
+
+Fase 3:
+Para resolver la fase 3, me di cuenta de que el programa esperaba un input en forma de una palabra seguida de un número. Ese número debia cumplir con una condición, ser mayor a 9999. 
+Analizando lo que hacia la funcion cuenta, vi que debia buscar una palabra con un indice alto, por lo tanto elegi "sufrir", seguida de un número aleatorio para ver qué ocurría. 
+Al ingresar el valor, noté que el programa llamaba a la función cuenta y comparaba el número ingresado con 122783. Y asi coneguí el número.
+
+Fase 4:
+Se espera una cadena de 6 caracteres. La función toma cada carácter, le aplica un & 0xF (extrae los últimos 4 bits del valor ASCII) y 
+usa el resultado como índice en un arreglo de 16 enteros (array.3475). Luego, suma los valores obtenidos de ese arreglo.
+Si el total es distinto de 68, explota la bomba. Una posible solución es "nsqwzr", ya que produce la suma correcta.
+
+Fase secreta:
+En esta fase se solicita un único número entre 1 y 1000. Para encontrar este número, se utiliza la función fun7, la cual recorre 
+un árbol binario de búsqueda (BST) a partir de la raíz n1. La función retorna un valor que codifica la ruta tomada durante la búsqueda: 
+ir a la izquierda multiplica el valor por 2, e ir a la derecha multiplica el valor por 2 y le suma 1. La función fun7 está diseñada para devolver el valor 2, 
+lo cual en binario se representa como 10. Esto indica que la ruta correcta en el árbol es: Derecha → Izquierda. Siguiendo esta ruta desde el nodo raíz n1 llegamos a un nodo con el valor 22. 
+Por lo tanto, el número correcto que se debe ingresar para que fun7 retorne 2 y desactive correctamente la fase secreta es 22.
