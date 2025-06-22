@@ -67,6 +67,7 @@ static void singleThreadSingleWaitTest() {
         oslock.unlock();
         sleep_for(1000);
     });
+    pool.wait(); 
 }
 
 static void noThreadsDoubleWaitTest() {

@@ -8,9 +8,9 @@ using namespace std;
 
 // Function to compute the sum of a subvector
 void computeSum(const vector<int>& data, int start, int end, int* result) {
-
     *result = accumulate(data.begin() + start, data.begin() + end, 0);
 }
+
 
 int main() {
     // Sample data
